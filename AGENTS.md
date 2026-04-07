@@ -4,7 +4,6 @@
 - when installing new packages, use bun add instead of manually editing the package.json file
 - dont build the project locally or create dev environment.
 - dont mix logic with ui components, keep them separate
-- use modern svelte and sveltekit patterns and primitives
 - avoid as any at all costs, try to infer types from functions as much as possible
 - use tailwindcss for styling whenever possible, only resort to custom css if needed
 - run bun run lint to check for linting errors, bun run format, and bun run check to check for errors after making changes.
