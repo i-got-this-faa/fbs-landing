@@ -1,17 +1,247 @@
 ---
-
+import '../styles/global.css';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!DOCTYPE html>
+<html lang="en" class="bg-[#dcdcdc] text-[#111] selection:bg-[#ff3300] selection:text-white">
+<head>
+  <meta charset="UTF-8" />
+  <title>FBS | Fast Blob Storage</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+  <style>
+    @font-face {
+      font-family: 'NeueMontreal';
+      src: url('https://cdn.jsdelivr.net/fontsource/fonts/inter@latest/latin-900-normal.woff2') format('woff2');
+      font-weight: 900;
+    }
+    @font-face {
+      font-family: 'Space Mono';
+      src: url('https://cdn.jsdelivr.net/fontsource/fonts/space-mono@latest/latin-400-normal.woff2') format('woff2');
+    }
+    
+    body {
+      font-family: 'Space Mono', monospace;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      cursor: crosshair;
+    }
+
+    h1, h2, h3, .brutal-title {
+      font-family: 'NeueMontreal', sans-serif;
+      text-transform: uppercase;
+      line-height: 0.8;
+      letter-spacing: -0.05em;
+    }
+
+    /* Custom Cursor / Blob */
+    #cursor-blob {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 40vmax;
+      height: 40vmax;
+      background: radial-gradient(circle, #ff3300 0%, transparent 70%);
+      border-radius: 50%;
+      mix-blend-mode: color-burn;
+      pointer-events: none;
+      transform: translate(-50%, -50%);
+      z-index: 100;
+      filter: blur(40px);
+      transition: transform 0.1s ease-out;
+    }
+
+    /* Marquee */
+    .marquee {
+      white-space: nowrap;
+      overflow: hidden;
+      display: flex;
+      border-top: 4px solid #111;
+      border-bottom: 4px solid #111;
+      padding: 1rem 0;
+      background: #111;
+      color: #dcdcdc;
+    }
+    .marquee span {
+      display: inline-block;
+      animation: scroll 20s linear infinite;
+      font-size: 3rem;
+      font-weight: 900;
+      padding-right: 2rem;
+    }
+    @keyframes scroll {
+      0% { transform: translateX(0); }
+      100% { transform: translateX(-100%); }
+    }
+
+    /* Grid layout */
+    .b-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 1rem;
+    }
+
+    /* Abstract shapes */
+    .shape-container {
+      clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 75% 100%, 0% 100%);
+      background: #111;
+      color: #dcdcdc;
+    }
+
+    /* Utility */
+    .huge-text {
+      font-size: clamp(6rem, 15vw, 20rem);
+    }
+  </style>
+</head>
+<body class="antialiased relative">
+  <div id="cursor-blob"></div>
+
+  <!-- Intro Screen / Manifesto -->
+  <main class="min-h-screen relative p-4 md:p-8 flex flex-col justify-between z-10">
+    <div class="flex justify-between items-start font-bold text-sm tracking-tighter uppercase border-b-4 border-[#111] pb-4">
+      <div>FBS_2026 // Radhey.Raghav.Sheershak</div>
+      <div class="text-right">Project<br/>MIET</div>
+      <div class="hidden md:block">S3_Compatible<br/>Storage Engine</div>
+    </div>
+
+    <div class="my-32 b-grid">
+      <div class="col-span-12 md:col-span-8 md:col-start-2">
+        <h1 class="brutal-title huge-text text-[#111]">
+          FAST<br/>BLOB<br/>STORAGE
+        </h1>
+      </div>
+    </div>
+
+    <div class="b-grid items-end pb-8">
+      <div class="col-span-12 md:col-span-4 border-l-4 border-[#111] pl-4">
+        <p class="text-xl md:text-2xl uppercase font-bold leading-tight">
+          We killed the multi-node cluster.
+        </p>
+        <p class="mt-4 text-sm max-w-sm">
+          A single-binary Go backend. SQLite metadata. 
+          Zero distributed overhead. Built for the homelab, not Amazon.
+        </p>
+      </div>
+      <div class="col-span-12 md:col-span-4 md:col-start-9 text-right mt-12 md:mt-0">
+        <i class="ph-fill ph-hard-drives text-[8rem] text-[#111]"></i>
+      </div>
+    </div>
+  </main>
+
+  <div class="marquee">
+    <span>NO GOSSIP PROTOCOLS &nbsp;&bull;&nbsp; NO 4-DRIVE MINIMUMS &nbsp;&bull;&nbsp; NO 500MB IDLE RAM &nbsp;&bull;&nbsp; PURE PERFORMANCE &nbsp;&bull;&nbsp; NO GOSSIP PROTOCOLS &nbsp;&bull;&nbsp; NO 4-DRIVE MINIMUMS &nbsp;&bull;&nbsp; NO 500MB IDLE RAM &nbsp;&bull;&nbsp; PURE PERFORMANCE &nbsp;&bull;&nbsp;</span>
+  </div>
+
+  <!-- Anatomy Section - Brutalist Asymmetry -->
+  <section class="min-h-screen p-4 md:p-8 relative z-10 my-32">
+    <div class="b-grid h-full">
+      
+      <!-- Sticky Sidebar -->
+      <div class="col-span-12 md:col-span-3">
+        <div class="sticky top-8">
+          <h2 class="brutal-title text-5xl md:text-8xl mb-8">THE<br/>GUTS.</h2>
+          <div class="flex flex-col gap-2 font-bold uppercase text-sm border-t-2 border-[#111] pt-4">
+            <span class="flex justify-between"><span>Engine</span> <span>Go / SQLite</span></span>
+            <span class="flex justify-between"><span>Auth</span> <span>SigV4 / Bearer</span></span>
+            <span class="flex justify-between"><span>UI</span> <span>SvelteKit / OpenTUI</span></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Content Area -->
+      <div class="col-span-12 md:col-span-8 md:col-start-5 mt-20 md:mt-0 flex flex-col gap-32">
+        
+        <!-- Block 1 -->
+        <article class="shape-container p-8 md:p-16 hover:bg-[#ff3300] transition-colors duration-500 group relative overflow-hidden">
+          <i class="ph-duotone ph-database text-[15rem] absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"></i>
+          <h3 class="text-4xl md:text-6xl brutal-title mb-8">Data before<br/>Metadata</h3>
+          <p class="text-lg md:text-2xl max-w-xl font-bold leading-relaxed relative z-10">
+            Write to .tmp. Rename atomically. Insert to SQLite. 
+            If the row isn't there, the data isn't there.
+          </p>
+        </article>
+
+        <!-- Block 2 -->
+        <article class="border-4 border-[#111] p-8 md:p-16 relative bg-[#dcdcdc] overflow-hidden group">
+          <div class="absolute inset-0 bg-[#111] translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
+          <div class="relative z-10 group-hover:text-[#dcdcdc] transition-colors duration-500">
+            <h3 class="text-4xl md:text-6xl brutal-title mb-8">Zero-Copy<br/>Egress</h3>
+            <p class="text-lg md:text-2xl max-w-xl font-bold leading-relaxed">
+              We bypass userspace completely. Linux sendfile() blasts bits straight from disk to network socket.
+            </p>
+          </div>
+        </article>
+
+        <!-- Block 3 -->
+        <article class="shape-container p-8 md:p-16 !bg-[#111] !text-white flex flex-col items-start relative">
+          <div class="bg-[#ff3300] text-black font-bold px-4 py-1 uppercase text-sm mb-8 inline-block rotate-[-2deg]">
+            Checksum Pipeline
+          </div>
+          <h3 class="text-4xl md:text-6xl brutal-title mb-8">TeeReader<br/>Validation</h3>
+          <p class="text-lg md:text-2xl max-w-xl font-bold leading-relaxed opacity-80">
+            Hashing data as it streams to disk. MD5 & x-amz-checksums verified at wire speed. Corrupt data dies before it lives.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- Huge Footer / Interaction Area -->
+  <footer class="min-h-[80vh] bg-[#111] text-[#dcdcdc] p-4 md:p-8 flex flex-col justify-between relative overflow-hidden z-10">
+    <div class="absolute inset-0 opacity-5 grid place-items-center">
+      <i class="ph-fill ph-asterisk text-[100vw] rotate-45"></i>
+    </div>
+    
+    <div class="flex justify-between items-center border-b border-white/20 pb-8 z-10">
+      <div class="text-sm font-bold uppercase tracking-widest">
+        Deploy Ecosystem
+      </div>
+      <a href="#" class="bg-[#ff3300] text-[#111] px-6 py-2 uppercase font-bold text-sm hover:scale-110 transition-transform">
+        Get the Binary
+      </a>
+    </div>
+
+    <div class="z-10 w-full text-center">
+      <h2 class="brutal-title huge-text text-[#dcdcdc] hover:text-[#ff3300] transition-colors cursor-pointer select-none">
+        DEPLOY
+      </h2>
+    </div>
+
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 border-t border-white/20 pt-8 z-10 text-xs font-bold uppercase">
+      <div>SvelteKit Dashboard</div>
+      <div>OpenTUI Terminal</div>
+      <div>Single-Node Optimized</div>
+      <div class="text-right">&copy; 2026 FBS</div>
+    </div>
+  </footer>
+
+  <script>
+    // Blob cursor effect
+    const blob = document.getElementById('cursor-blob');
+    let mouseX = 0;
+    let mouseY = 0;
+    let blobX = 0;
+    let blobY = 0;
+
+    window.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    function animate() {
+      // Smooth interpolation
+      blobX += (mouseX - blobX) * 0.1;
+      blobY += (mouseY - blobY) * 0.1;
+      
+      if (blob) {
+        blob.style.transform = `translate(calc(${blobX}px - 50%), calc(${blobY}px - 50%))`;
+      }
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+  </script>
+</body>
 </html>
