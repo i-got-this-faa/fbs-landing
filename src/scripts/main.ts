@@ -50,15 +50,36 @@ if (themeToggle) {
   });
 }
 
-// --- Parallax Scroll Animation for "AGE" ---
-const animA = document.querySelector('.anim-a') as HTMLElement;
-const animG = document.querySelector('.anim-g') as HTMLElement;
-const animE = document.querySelector('.anim-e') as HTMLElement;
+// --- Parallax Scroll Animation for highlighted letters ---
+const heroAnimA = document.querySelector<HTMLElement>('.anim-a');
+const heroAnimG = document.querySelector<HTMLElement>('.anim-g');
+const heroAnimE = document.querySelector<HTMLElement>('.anim-e');
 
-window.addEventListener('scroll', () => {
+const footer = document.querySelector<HTMLElement>('footer');
+const footerAnimO = document.querySelector<HTMLElement>('.footer-anim-o');
+const footerAnimY = document.querySelector<HTMLElement>('.footer-anim-y');
+const footerAnimBang = document.querySelector<HTMLElement>('.footer-anim-bang');
+
+const clamp = (value: number, min: number, max: number) => {
+  return Math.min(max, Math.max(min, value));
+};
+
+function updateParallax() {
   const scrollY = window.scrollY;
-  
-  if (animA) animA.style.transform = `translateY(-${scrollY * 0.1}px)`;
-  if (animG) animG.style.transform = `translateY(-${scrollY * 0.25}px)`;
-  if (animE) animE.style.transform = `translateY(-${scrollY * 0.45}px)`;
-});
+
+  if (heroAnimA) heroAnimA.style.transform = `translateY(-${scrollY * 0.1}px)`;
+  if (heroAnimG) heroAnimG.style.transform = `translateY(-${scrollY * 0.25}px)`;
+  if (heroAnimE) heroAnimE.style.transform = `translateY(-${scrollY * 0.45}px)`;
+
+  if (footer) {
+    const rect = footer.getBoundingClientRect();
+    const progress = clamp((window.innerHeight - rect.top) / (window.innerHeight + rect.height), 0, 1);
+
+    if (footerAnimO) footerAnimO.style.transform = `translateY(-${progress * 48}px)`;
+    if (footerAnimY) footerAnimY.style.transform = `translateY(-${progress * 96}px)`;
+    if (footerAnimBang) footerAnimBang.style.transform = `translateY(-${progress * 144}px)`;
+  }
+}
+
+window.addEventListener('scroll', updateParallax, { passive: true });
+updateParallax();
