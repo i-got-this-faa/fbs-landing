@@ -59,6 +59,8 @@ const footer = document.querySelector<HTMLElement>('footer');
 const footerAnimO = document.querySelector<HTMLElement>('.footer-anim-o');
 const footerAnimY = document.querySelector<HTMLElement>('.footer-anim-y');
 const footerAnimBang = document.querySelector<HTMLElement>('.footer-anim-bang');
+const footerPlatter = document.querySelector<SVGGraphicsElement>('.footer-platter');
+const footerArm = document.querySelector<SVGGraphicsElement>('.footer-arm');
 
 const clamp = (value: number, min: number, max: number) => {
   return Math.min(max, Math.max(min, value));
@@ -78,6 +80,8 @@ function updateParallax() {
     if (footerAnimO) footerAnimO.style.transform = `translateY(-${progress * 48}px)`;
     if (footerAnimY) footerAnimY.style.transform = `translateY(-${progress * 96}px)`;
     if (footerAnimBang) footerAnimBang.style.transform = `translateY(-${progress * 144}px)`;
+    if (footerPlatter) footerPlatter.style.transform = `rotate(${12 + progress * 1320}deg)`;
+    if (footerArm) footerArm.style.transform = `rotate(${-18 + progress * 48}deg)`;
   }
 }
 
