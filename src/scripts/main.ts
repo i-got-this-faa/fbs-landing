@@ -60,8 +60,8 @@ function updateParallax() {
     if (footerAnimO) footerAnimO.style.transform = `translateY(-${progress * 48}px)`;
     if (footerAnimY) footerAnimY.style.transform = `translateY(-${progress * 96}px)`;
     if (footerAnimBang) footerAnimBang.style.transform = `translateY(-${progress * 144}px)`;
-    if (footerPlatter) footerPlatter.style.transform = `rotate(${12 + progress * 1320}deg)`;
-    if (footerArm) footerArm.style.transform = `rotate(${-18 + progress * 48}deg)`;
+    if (footerPlatter) footerPlatter.setAttribute('transform', `rotate(${12 + progress * 1320} 500 500)`);
+    if (footerArm) footerArm.setAttribute('transform', `rotate(${-18 + progress * 48} 820 500)`);
   }
 }
 
