@@ -10,8 +10,12 @@
           <circle cx="500" cy="500" r="300" fill="none" stroke="currentColor" stroke-opacity="0.18" stroke-width="2.5" />
           <circle cx="500" cy="500" r="215" fill="none" stroke="currentColor" stroke-opacity="0.14" stroke-width="2" />
 
+          <!-- Enhanced Spindle Motor -->
+          <circle cx="500" cy="500" r="110" fill="currentColor" fill-opacity="0.1" stroke="currentColor" stroke-opacity="0.2" stroke-width="2" />
           <circle cx="500" cy="500" r="78" fill="currentColor" fill-opacity="0.24" stroke="currentColor" stroke-opacity="0.35" stroke-width="4" />
+          <circle cx="500" cy="500" r="54" fill="none" stroke="currentColor" stroke-opacity="0.3" stroke-width="6" stroke-dasharray="10 6" />
           <circle cx="500" cy="500" r="34" fill="currentColor" fill-opacity="0.55" stroke="currentColor" stroke-opacity="0.42" stroke-width="2" />
+          <circle cx="500" cy="500" r="12" fill="var(--bg-color)" fill-opacity="0.8" />
 
           <circle cx="500" cy="428" r="8" fill="currentColor" fill-opacity="0.62" />
           <circle cx="562" cy="464" r="8" fill="currentColor" fill-opacity="0.62" />
@@ -22,27 +26,42 @@
         </g>
 
         <g transform="rotate(-20 500 500)">
+          <!-- Pivot bearing (stationary relative to group, outside platter) -->
           <g style="color: var(--accent-color)" opacity="0.95">
-            <circle cx="820" cy="500" r="50" fill="currentColor" fill-opacity="0.34" stroke="currentColor" stroke-opacity="0.75" stroke-width="6" />
-            <circle cx="820" cy="500" r="20" fill="currentColor" fill-opacity="0.72" stroke="currentColor" stroke-opacity="0.65" stroke-width="2" />
+            <circle cx="1020" cy="500" r="50" fill="currentColor" fill-opacity="0.34" stroke="currentColor" stroke-opacity="0.75" stroke-width="6" />
+            <circle cx="1020" cy="500" r="35" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-width="2" />
+            <circle cx="1020" cy="500" r="20" fill="currentColor" fill-opacity="0.72" stroke="currentColor" stroke-opacity="0.65" stroke-width="2" />
+            <circle cx="1020" cy="500" r="8" fill="var(--bg-color)" fill-opacity="0.6" />
           </g>
 
-          <g class="footer-actuator-body" style="color: var(--accent-color)" opacity="0.95">
-            <path d="M 848 540 C 900 528, 938 502, 964 466 L 964 548 C 932 574, 892 592, 838 604 Z" fill="currentColor" fill-opacity="0.34" stroke="currentColor" stroke-opacity="0.64" stroke-width="3" />
-            <circle cx="882" cy="548" r="9" fill="currentColor" fill-opacity="0.8" />
-            <circle cx="928" cy="522" r="7" fill="currentColor" fill-opacity="0.7" />
+          <!-- Actuator body / Guard (stationary relative to group, rotated to sit above/behind pivot) -->
+          <g class="footer-actuator-body" style="color: var(--accent-color)" opacity="0.95" transform="rotate(-55 1020 500)">
+            <path d="M 1048 540 C 1100 528, 1138 502, 1164 466 L 1164 548 C 1132 574, 1092 592, 1038 604 Z" fill="currentColor" fill-opacity="0.34" stroke="currentColor" stroke-opacity="0.64" stroke-width="3" />
+            <path d="M 1055 545 C 1095 535, 1125 515, 1145 485" fill="none" stroke="currentColor" stroke-opacity="0.4" stroke-width="4" />
+            <circle cx="1082" cy="548" r="9" fill="currentColor" fill-opacity="0.8" />
+            <circle cx="1082" cy="548" r="3" fill="var(--bg-color)" fill-opacity="0.8" />
+            <circle cx="1128" cy="522" r="7" fill="currentColor" fill-opacity="0.7" />
+            <circle cx="1128" cy="522" r="2" fill="var(--bg-color)" fill-opacity="0.8" />
           </g>
 
+          <!-- Arm assembly (rotates around pivot) -->
           <g class="footer-arm" style="color: var(--accent-color)">
-            <path d="M 808 502 C 748 494, 680 490, 622 498" fill="none" stroke="currentColor" stroke-opacity="0.9" stroke-width="16" stroke-linecap="round" />
-            <path d="M 816 520 C 754 510, 686 504, 628 510" fill="none" stroke="currentColor" stroke-opacity="0.52" stroke-width="7" stroke-linecap="round" />
+            <!-- Main thick arm body with triangular cutout -->
+            <path fill-rule="evenodd" d="M 1020 470 L 860 486 L 860 510 L 1020 530 Z M 880 498 L 990 516 L 990 484 Z" fill="currentColor" fill-opacity="0.25" stroke="currentColor" stroke-opacity="0.9" stroke-width="3" stroke-linejoin="round" />
+            
+            <!-- Secondary structural lines / suspension -->
+            <path d="M 860 498 L 704 498" fill="none" stroke="currentColor" stroke-opacity="0.8" stroke-width="6" stroke-linecap="round" />
+            <path d="M 860 504 L 710 508" fill="none" stroke="currentColor" stroke-opacity="0.5" stroke-width="2" stroke-linecap="round" />
 
-            <circle cx="750" cy="498" r="13" fill="currentColor" fill-opacity="0.58" stroke="currentColor" stroke-opacity="0.75" stroke-width="2" />
-
+            <!-- Joint circle -->
+            <circle cx="860" cy="498" r="14" fill="var(--bg-color)" />
+            <circle cx="860" cy="498" r="14" fill="currentColor" fill-opacity="0.58" stroke="currentColor" stroke-opacity="0.75" stroke-width="3" />
+            <circle cx="860" cy="498" r="5" fill="var(--bg-color)" fill-opacity="0.8" />
+            
             <g class="footer-read-head" opacity="1">
-              <path d="M 618 496 L 592 478 L 570 496 L 594 518 Z" fill="currentColor" fill-opacity="0.82" stroke="currentColor" stroke-opacity="0.8" stroke-width="2" />
-              <circle cx="590" cy="496" r="5" fill="currentColor" fill-opacity="1" />
-              <path d="M 612 498 L 598 486" fill="none" stroke="currentColor" stroke-opacity="0.9" stroke-width="2" stroke-linecap="round" />
+              <path d="M 700 496 L 674 478 L 652 496 L 676 518 Z" fill="currentColor" fill-opacity="0.82" stroke="currentColor" stroke-opacity="0.8" stroke-width="2" />
+              <circle cx="672" cy="496" r="5" fill="currentColor" fill-opacity="1" />
+              <path d="M 694 498 L 680 486" fill="none" stroke="currentColor" stroke-opacity="0.9" stroke-width="2" stroke-linecap="round" />
             </g>
           </g>
         </g>

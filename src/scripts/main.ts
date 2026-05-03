@@ -61,7 +61,7 @@ function updateParallax() {
     if (footerAnimY) footerAnimY.style.transform = `translateY(-${progress * 96}px)`;
     if (footerAnimBang) footerAnimBang.style.transform = `translateY(-${progress * 144}px)`;
     if (footerPlatter) footerPlatter.setAttribute('transform', `rotate(${12 + progress * 1320} 500 500)`);
-    if (footerArm) footerArm.setAttribute('transform', `rotate(${-18 + progress * 48} 820 500)`);
+    if (footerArm) footerArm.setAttribute('transform', `rotate(${-18 + progress * 48} 1020 500)`);
   }
 }
 
