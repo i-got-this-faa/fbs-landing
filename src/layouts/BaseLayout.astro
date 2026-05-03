@@ -14,11 +14,15 @@ const { title } = Astro.props;
   <meta charset="UTF-8" />
   <title>{title}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <meta name="description" content="FBS is a self-hosted, lightweight S3-compatible object storage engine built in Go. Designed for homelabs and single-node deployments." />
   <script src="https://unpkg.com/@phosphor-icons/web" is:inline></script>
 </head>
 <body class="antialiased relative">
-  <div id="cursor-blob"></div>
-  <slot />
+  <div class="overflow-x-clip relative w-full min-h-screen">
+    <div id="cursor-blob"></div>
+    <slot />
+  </div>
   <script src="../scripts/main.ts"></script>
 </body>
 </html>

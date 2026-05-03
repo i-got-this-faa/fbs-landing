@@ -1,30 +1,30 @@
 ---
 ---
-<section class="min-h-screen p-4 md:p-8 relative z-10 my-32">
+<section id="features" class="min-h-screen p-4 md:p-8 relative z-10 my-32">
   <div class="b-grid h-full">
-    
+
     <!-- Sticky Sidebar -->
     <div class="col-span-12 md:col-span-3">
       <div class="sticky top-32">
-        <h2 class="brutal-title text-5xl md:text-8xl mb-8">THE<br/>GUTS.</h2>
+        <h2 class="brutal-title text-5xl md:text-8xl mb-8">FEATURES.</h2>
         <div class="flex flex-col gap-2 font-bold uppercase text-sm border-t-2 border-theme pt-4">
-          <span class="flex justify-between"><span>Engine</span> <span>Go / SQLite</span></span>
+          <span class="flex justify-between"><span>Engine</span> <span>Go</span></span>
+          <span class="flex justify-between"><span>Metadata</span> <span>SQLite WAL</span></span>
           <span class="flex justify-between"><span>Auth</span> <span>SigV4 / Bearer</span></span>
-          <span class="flex justify-between"><span>UI</span> <span>SvelteKit / OpenTUI</span></span>
+          <span class="flex justify-between"><span>Storage</span> <span>Local FS</span></span>
         </div>
       </div>
     </div>
 
     <!-- Content Area -->
     <div class="col-span-12 md:col-span-8 md:col-start-5 mt-20 md:mt-0 flex flex-col gap-32">
-      
+
       <!-- Block 1 -->
       <article class="shape-container p-8 md:p-16 hover:bg-(--accent-color)! hover:text-[#111]! transition-all duration-500 group relative overflow-hidden">
         <i class="ph-duotone ph-database text-[15rem] absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"></i>
-        <h3 class="text-4xl md:text-6xl brutal-title mb-8 relative z-10">Data before<br/>Metadata</h3>
-        <p class="text-lg md:text-2xl max-w-xl font-bold leading-relaxed relative z-10">
-          Write to .tmp. Rename atomically. Insert to SQLite. 
-          If the row isn't there, the data isn't there.
+        <h3 class="text-4xl md:text-6xl brutal-title mb-4 relative z-10">S3 Compatible</h3>
+        <p class="text-base md:text-lg max-w-lg font-bold leading-relaxed relative z-10 opacity-70 group-hover:opacity-90">
+          PUT, GET, DELETE, LIST, multipart. Drop-in for AWS SDKs and CLI.
         </p>
       </article>
 
@@ -32,22 +32,33 @@
       <article class="border-4 border-theme p-8 md:p-16 relative bg-transparent overflow-hidden group">
         <div class="absolute inset-0 bg-(--text-color) translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
         <div class="relative z-10 group-hover:text-(--bg-color) transition-colors duration-500">
-          <h3 class="text-4xl md:text-6xl brutal-title mb-8">Zero-Copy<br/>Egress</h3>
-          <p class="text-lg md:text-2xl max-w-xl font-bold leading-relaxed">
-            We bypass userspace completely. Linux sendfile() blasts bits straight from disk to network socket.
+          <h3 class="text-4xl md:text-6xl brutal-title mb-4">Zero-Copy Egress</h3>
+          <p class="text-base md:text-lg max-w-lg font-bold leading-relaxed opacity-70 group-hover:opacity-90">
+            Linux sendfile(). Disk to socket. No userspace detour.
           </p>
         </div>
       </article>
 
       <!-- Block 3 -->
       <article class="shape-container p-8 md:p-16 bg-(--text-color)! text-(--bg-color)! flex flex-col items-start relative">
-        <div class="bg-(--accent-color) text-black font-bold px-4 py-1 uppercase text-sm mb-8 inline-block -rotate-2">
-          Checksum Pipeline
+        <div class="bg-(--accent-color) text-black font-bold px-4 py-1 uppercase text-sm mb-6 inline-block -rotate-2">
+          Data Integrity
         </div>
-        <h3 class="text-4xl md:text-6xl brutal-title mb-8">TeeReader<br/>Validation</h3>
-        <p class="text-lg md:text-2xl max-w-xl font-bold leading-relaxed opacity-80">
-          Hashing data as it streams to disk. MD5 & x-amz-checksums verified at wire speed. Corrupt data dies before it lives.
+        <h3 class="text-4xl md:text-6xl brutal-title mb-4">Atomic Writes</h3>
+        <p class="text-base md:text-lg max-w-lg font-bold leading-relaxed opacity-70">
+          Atomic renames before metadata commit. MD5 + x-amz-checksum validated inline.
         </p>
+      </article>
+
+      <!-- Block 4 -->
+      <article class="border-4 border-theme p-8 md:p-16 relative bg-transparent overflow-hidden group">
+        <div class="absolute inset-0 bg-(--accent-color) translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
+        <div class="relative z-10 group-hover:text-[#111] transition-colors duration-500">
+          <h3 class="text-4xl md:text-6xl brutal-title mb-4">Single Node</h3>
+          <p class="text-base md:text-lg max-w-lg font-bold leading-relaxed opacity-70 group-hover:opacity-90">
+            No gossip. No consensus. One binary. Homelab ready.
+          </p>
+        </div>
       </article>
     </div>
   </div>

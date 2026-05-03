@@ -21,39 +21,12 @@ function animateBlob() {
 }
 animateBlob();
 
-// --- Dark Mode Toggle ---
-const themeToggle = document.getElementById('theme-toggle');
-const htmlElement = document.documentElement;
-
-if (themeToggle) {
-  const themeIcon = themeToggle.querySelector('i');
-
-  // Check local storage for theme preference
-  if (localStorage.getItem('theme') === 'dark') {
-    htmlElement.classList.add('dark');
-    if (themeIcon) themeIcon.classList.replace('ph-moon', 'ph-sun');
-  }
-
-  themeToggle.addEventListener('click', () => {
-    htmlElement.classList.toggle('dark');
-    const isDark = htmlElement.classList.contains('dark');
-    
-    if (themeIcon) {
-      if (isDark) {
-        localStorage.setItem('theme', 'dark');
-        themeIcon.classList.replace('ph-moon', 'ph-sun');
-      } else {
-        localStorage.setItem('theme', 'light');
-        themeIcon.classList.replace('ph-sun', 'ph-moon');
-      }
-    }
-  });
-}
-
 // --- Parallax Scroll Animation for highlighted letters ---
 const heroAnimA = document.querySelector<HTMLElement>('.anim-a');
 const heroAnimG = document.querySelector<HTMLElement>('.anim-g');
 const heroAnimE = document.querySelector<HTMLElement>('.anim-e');
+const heroImage = document.querySelector<HTMLElement>('.hero-image');
+const heroSection = document.querySelector<HTMLElement>('.hero-section');
 
 const footer = document.querySelector<HTMLElement>('footer');
 const footerAnimO = document.querySelector<HTMLElement>('.footer-anim-o');
@@ -69,9 +42,16 @@ const clamp = (value: number, min: number, max: number) => {
 function updateParallax() {
   const scrollY = window.scrollY;
 
-  if (heroAnimA) heroAnimA.style.transform = `translateY(-${scrollY * 0.1}px)`;
-  if (heroAnimG) heroAnimG.style.transform = `translateY(-${scrollY * 0.25}px)`;
-  if (heroAnimE) heroAnimE.style.transform = `translateY(-${scrollY * 0.45}px)`;
+  if (heroAnimA) heroAnimA.style.transform = `translateY(-${scrollY * 0.05}px)`;
+  if (heroAnimG) heroAnimG.style.transform = `translateY(-${scrollY * 0.125}px)`;
+  if (heroAnimE) heroAnimE.style.transform = `translateY(-${scrollY * 0.225}px)`;
+
+  if (heroImage && heroSection) {
+  const heroHeight = heroSection.offsetHeight;
+  const progress = clamp(scrollY / heroHeight, 0, 1);
+  const scale = 1 + progress * 0.5; // subtle zoom from 1x to 1.06x
+  heroImage.style.transform = `scale(${scale})`;
+}
 
   if (footer) {
     const rect = footer.getBoundingClientRect();
