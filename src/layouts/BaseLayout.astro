@@ -3,9 +3,13 @@ import '../styles/global.css';
 
 interface Props {
   title: string;
+  description?: string;
 }
 
-const { title } = Astro.props;
+const {
+  title,
+  description = 'FBS is a self-hosted, lightweight S3-compatible object storage engine built in Go. Designed for homelabs and single-node deployments.'
+} = Astro.props;
 ---
 
 <!DOCTYPE html>
@@ -15,7 +19,7 @@ const { title } = Astro.props;
   <title>{title}</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <meta name="description" content="FBS is a self-hosted, lightweight S3-compatible object storage engine built in Go. Designed for homelabs and single-node deployments." />
+  <meta name="description" content={description} />
   <script src="https://unpkg.com/@phosphor-icons/web" is:inline></script>
 </head>
 <body class="antialiased relative">
