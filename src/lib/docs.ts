@@ -124,14 +124,9 @@ export async function getDocPage(slug: string): Promise<DocPage> {
 }
 
 function resolveDocsDirectory(): string {
-  const candidates = [
-    resolve(process.cwd(), '..', 'fbs-core', 'docs'),
-    resolve(process.cwd(), 'docs')
-  ];
-
-  const directory = candidates.find((candidate) => existsSync(candidate));
-  if (!directory) {
-    throw new Error('Unable to find fbs-core docs directory.');
+  const directory = resolve(process.cwd(), 'docs');
+  if (!existsSync(directory)) {
+    throw new Error('Unable to find local docs directory.');
   }
 
   return directory;
