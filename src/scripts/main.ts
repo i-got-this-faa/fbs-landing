@@ -1,26 +1,3 @@
-// --- Blob Cursor Effect ---
-const blob = document.getElementById('cursor-blob');
-let mouseX = 0;
-let mouseY = 0;
-let blobX = 0;
-let blobY = 0;
-
-window.addEventListener('mousemove', (e) => {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
-});
-
-function animateBlob() {
-  blobX += (mouseX - blobX) * 0.1;
-  blobY += (mouseY - blobY) * 0.1;
-  
-  if (blob) {
-    blob.style.transform = `translate(calc(${blobX}px - 50%), calc(${blobY}px - 50%))`;
-  }
-  requestAnimationFrame(animateBlob);
-}
-animateBlob();
-
 // --- Parallax Scroll Animation for highlighted letters ---
 const heroAnimA = document.querySelector<HTMLElement>('.anim-a');
 const heroAnimG = document.querySelector<HTMLElement>('.anim-g');

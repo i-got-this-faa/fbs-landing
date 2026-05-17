@@ -1,5 +1,6 @@
 ---
 import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
 import type { DocHeading, DocNavItem, DocPage } from '../lib/docs';
 
 interface Props {
@@ -15,32 +16,10 @@ function hrefFor(slug: string) {
 ---
 
 <BaseLayout title={`${doc.title} | FBS Docs`} description={doc.description}>
-  <main class="relative z-10 min-h-screen bg-[var(--bg-color)] text-[var(--text-color)]">
-    <header class="sticky top-0 z-50 border-b-2 border-[var(--text-color)] bg-[var(--bg-color)]/95 backdrop-blur">
-      <div class="mx-auto flex h-16 max-w-[1440px] items-center justify-between gap-4 px-4 md:px-8">
-        <a href="/" class="flex items-center gap-2 text-sm font-bold uppercase tracking-tight transition-colors hover:text-[var(--accent-color)]">
-          <i class="ph-bold ph-arrow-left"></i>
-          FBS
-        </a>
-        <div class="flex items-center gap-3 text-sm font-bold uppercase tracking-tight">
-          <a href="/docs/" class="flex items-center gap-2 text-[var(--accent-color)]">
-            <i class="ph-fill ph-book-open"></i>
-            Docs
-          </a>
-          <a
-            href="https://github.com/i-got-this-faa/fbs-core"
-            target="_blank"
-            class="hidden items-center gap-2 transition-colors hover:text-[var(--accent-color)] sm:flex"
-          >
-            <i class="ph-fill ph-github-logo"></i>
-            GitHub
-          </a>
-        </div>
-      </div>
-    </header>
-
+  <Header />
+  <main class="relative z-10 min-h-screen bg-[var(--bg-color)] pt-[var(--site-header-height)] text-[var(--text-color)]">
     <div class="mx-auto grid max-w-[1440px] grid-cols-1 lg:grid-cols-[280px_minmax(0,1fr)] xl:grid-cols-[280px_minmax(0,1fr)_260px]">
-      <aside class="border-b-2 border-[var(--text-color)] bg-[var(--bg-color)] lg:sticky lg:top-[calc(4rem_+_2px)] lg:h-[calc(100vh_-_4rem_-_2px)] lg:border-b-0 lg:border-r-2">
+      <aside class="border-b-2 border-[var(--text-color)] bg-[var(--bg-color)] lg:sticky lg:top-[var(--site-header-height)] lg:h-[calc(100vh_-_var(--site-header-height))] lg:border-b-0 lg:border-r-2">
         <nav class="px-4 py-4 lg:py-8" aria-label="Documentation">
           <div class="mb-3 px-3 text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent-color)]">Documentation</div>
           <div class="flex gap-2 overflow-x-auto pb-1 lg:flex-col lg:overflow-visible lg:pb-0">
@@ -71,7 +50,7 @@ function hrefFor(slug: string) {
         <div class="doc-content" set:html={doc.html} />
       </article>
 
-      <aside class="hidden border-l-2 border-[var(--text-color)] px-5 py-14 xl:sticky xl:top-[calc(4rem_+_2px)] xl:block xl:h-[calc(100vh_-_4rem_-_2px)]">
+      <aside class="hidden border-l-2 border-[var(--text-color)] px-5 py-14 xl:sticky xl:top-[var(--site-header-height)] xl:block xl:h-[calc(100vh_-_var(--site-header-height))]">
         <div>
           <div class="mb-3 text-xs font-bold uppercase tracking-[0.18em] text-[var(--accent-color)]">On This Page</div>
           {doc.headings.length > 0 ? (
