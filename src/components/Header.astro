@@ -9,20 +9,20 @@ const isDocsPage = Astro.url.pathname.startsWith('/docs');
   <nav class="flex items-center gap-6 md:gap-8">
     {
       isDocsPage ? (
-        <a href="/" class="hidden md:flex items-center gap-2 hover:text-(--accent-color) transition-colors">
-          <i class="ph-bold ph-arrow-left"></i>
-          <span>Back</span>
+        <a href="/" class="hidden md:flex hover:text-(--accent-color) transition-colors">
+          <span>[ Back ]</span>
         </a>
       ) : (
-        <a href="/docs/" class="hidden md:flex items-center gap-2 hover:text-(--accent-color) transition-colors">
-          <i class="ph-fill ph-book-open"></i>
-          <span>Docs</span>
+        <a href="/docs/" class="hidden md:flex hover:text-(--accent-color) transition-colors">
+          <span>[ Docs ]</span>
         </a>
       )
     }
-    <a href="https://github.com/i-got-this-faa/fbs-core" class="hidden md:flex items-center gap-2 hover:text-(--accent-color) transition-colors">
-      <i class="ph-fill ph-github-logo"></i>
-      <span>GitHub</span>
+    <a href="https://github.com/i-got-this-faa/fbs-core" class="hidden md:flex hover:text-(--accent-color) transition-colors">
+      <span>[ github ]</span>
+    </a>
+    <a href="https://fastblobstorage.vercel.app/setup" class="hidden md:flex hover:text-(--accent-color) transition-colors">
+      <span>[ Dashboard ]</span>
     </a>
   </nav>
 </header>

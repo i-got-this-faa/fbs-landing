@@ -26,7 +26,7 @@
           <div>
             <div class="flex items-start gap-2">
               <span class="text-(--accent-color) font-bold select-none shrink-0">$</span>
-              <code>go install github.com/i-got-this-faa/fbs-core/cmd/server@latest</code>
+              <code>docker pull ghcr.io/i-got-this-faa/fbs-core:latest</code>
             </div>
           </div>
 
@@ -35,9 +35,15 @@
             <div class="flex items-start gap-2">
               <span class="text-(--accent-color) font-bold select-none shrink-0">$</span>
               <div class="space-y-1">
-                <code>export FBS_PORT=8080</code>
+                <code>docker volume create fbs-data</code>
                 <br/>
-                <code>export FBS_DATA_DIR=/var/lib/fbs</code>
+                <code>docker run -d --name fbs-core -p 9000:9000 \</code>
+                <br/>
+                <code>&nbsp;&nbsp;-v fbs-data:/var/lib/fbs \</code>
+                <br/>
+                <code>&nbsp;&nbsp;-e FBS_PUBLIC_BASE_URL=http://127.0.0.1:9000 \</code>
+                <br/>
+                <code>&nbsp;&nbsp;ghcr.io/i-got-this-faa/fbs-core:latest</code>
               </div>
             </div>
           </div>
@@ -46,10 +52,10 @@
           <div>
             <div class="flex items-start gap-2">
               <span class="text-(--accent-color) font-bold select-none shrink-0">$</span>
-              <code>fbs-server</code>
+              <code>curl http://127.0.0.1:9000/healthz</code>
             </div>
             <div class="mt-1 ml-4 opacity-40">
-              <code>[INFO] listening on :8080</code>
+              <code>ok</code>
             </div>
           </div>
 
@@ -60,7 +66,7 @@
               <div>
                 <code>aws s3 cp file.txt s3://mybucket/ \</code>
                 <br/>
-                <code>&nbsp;&nbsp;--endpoint-url http://localhost:8080</code>
+                <code>&nbsp;&nbsp;--endpoint-url http://localhost:9000</code>
               </div>
             </div>
             <div class="mt-1 ml-4 opacity-40">

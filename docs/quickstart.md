@@ -7,6 +7,8 @@ This quickstart runs `fbs-core` with Docker, creates the first admin credentials
 Use the published image from GitHub Container Registry:
 
 ```bash
+docker pull ghcr.io/i-got-this-faa/fbs-core:latest
+
 docker volume create fbs-data
 
 docker run -d \
