@@ -17,7 +17,7 @@ const clamp = (value: number, min: number, max: number) => {
   return Math.min(max, Math.max(min, value));
 };
 
-const heroVideoScrollFactor = 0.5;
+const heroVideoScrollFactor = 0.75; // Adjust this value to control how fast the video scrubs in relation to scroll
 let targetHeroVideoTime = 0;
 let currentHeroVideoTime = 0;
 
