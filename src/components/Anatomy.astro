@@ -6,25 +6,48 @@
     <!-- Sticky Sidebar -->
     <div class="col-span-12 md:col-span-3">
       <div class="sticky top-32">
-        <h2 class="brutal-title text-5xl md:text-8xl mb-8">FEATURES.</h2>
+        <h2 class="brutal-title text-5xl md:text-8xl mb-8">WHY?</h2>
         <div class="flex flex-col gap-2 font-bold uppercase text-sm border-t-2 border-theme pt-4">
           <span class="flex justify-between"><span>Engine</span> <span>Go</span></span>
           <span class="flex justify-between"><span>Metadata</span> <span>SQLite WAL</span></span>
           <span class="flex justify-between"><span>Auth</span> <span>SigV4 / Bearer</span></span>
-          <span class="flex justify-between"><span>Storage</span> <span>Local FS</span></span>
+          <span class="flex justify-between"><span>Storage</span> <span>Local Disk</span></span>
+        </div>
+        <div class="mt-12 flex flex-col gap-2 border-t-2 border-theme pt-4 font-bold uppercase text-sm">
+          <span class="opacity-70">Footprint</span>
+          <dl class="flex flex-col gap-2">
+            <div class="flex justify-between gap-4">
+              <dt>Binary</dt>
+              <dd class="whitespace-nowrap">15 MB</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt>Docker</dt>
+              <dd class="whitespace-nowrap">38 MB</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt>Idle RSS</dt>
+              <dd class="whitespace-nowrap">15 MB</dd>
+            </div>
+            <div class="flex justify-between gap-4">
+              <dt>Load RSS</dt>
+              <dd class="whitespace-nowrap">~20 MB</dd>
+            </div>
+          </dl>
         </div>
       </div>
     </div>
 
     <!-- Content Area -->
-    <div class="col-span-12 md:col-span-8 md:col-start-5 mt-20 md:mt-0 flex flex-col gap-32">
+    <div class="col-span-12 md:col-span-8 md:col-start-5 mt-20 md:mt-0 flex flex-col gap-24 md:gap-32">
 
       <!-- Block 1 -->
       <article class="shape-container p-8 md:p-16 hover:bg-(--accent-color)! hover:text-[#111]! transition-all duration-500 group relative overflow-hidden">
         <i class="ph-duotone ph-database text-[15rem] absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"></i>
-        <h3 class="text-4xl md:text-6xl brutal-title mb-4 relative z-10">S3 Compatible</h3>
+        <h3 class="text-4xl md:text-6xl brutal-title mb-4 relative z-10">Single-Node First</h3>
         <p class="text-base md:text-lg max-w-none xl:max-w-3xl font-bold leading-relaxed relative z-10 opacity-70 group-hover:opacity-90">
-          PUT, GET, DELETE, LIST, multipart. Drop-in for AWS SDKs and CLI.
+          FBS is made for one server. It keeps the storage path
+          local and predictable, without cluster machinery that only makes sense when you
+          have a cluster.
         </p>
       </article>
 
@@ -32,9 +55,10 @@
       <article class="border-4 border-theme p-8 md:p-16 relative bg-transparent overflow-hidden group">
         <div class="absolute inset-0 bg-(--text-color) translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
         <div class="relative z-10 group-hover:text-(--bg-color) transition-colors duration-500">
-          <h3 class="text-4xl md:text-6xl brutal-title mb-4">Zero-Copy Egress</h3>
+          <h3 class="text-4xl md:text-6xl brutal-title mb-4">Tiny Footprint</h3>
           <p class="text-base md:text-lg max-w-none xl:max-w-3xl font-bold leading-relaxed opacity-70 group-hover:opacity-90">
-            Linux sendfile(). Disk to socket. No userspace detour.
+            One small binary, no heavyweight control plane, and no background scheduler
+            pile. It stays out of the way on the same box as your app.
           </p>
         </div>
       </article>
@@ -42,11 +66,13 @@
       <!-- Block 3 -->
       <article class="shape-container p-8 md:p-16 bg-(--text-color)! text-(--bg-color)! flex flex-col items-start relative">
         <div class="bg-(--accent-color) text-black font-bold px-4 py-1 uppercase text-sm mb-6 inline-block -rotate-2">
-          Data Integrity
+          Download Path
         </div>
-        <h3 class="text-4xl md:text-6xl brutal-title mb-4">Atomic Writes</h3>
+        <h3 class="text-4xl md:text-6xl brutal-title mb-4">Fast Downloads</h3>
         <p class="text-base md:text-lg max-w-none xl:max-w-3xl font-bold leading-relaxed opacity-70">
-          Atomic renames before metadata commit. MD5 + x-amz-checksum validated inline.
+          Downloads stay direct with efficient file serving, range support, ETags, and
+          hot metadata caching. The path is tuned for the common case: serving bytes back
+          quickly.
         </p>
       </article>
 
@@ -54,11 +80,24 @@
       <article class="border-4 border-theme p-8 md:p-16 relative bg-transparent overflow-hidden group">
         <div class="absolute inset-0 bg-(--accent-color) translate-y-full group-hover:translate-y-0 transition-transform duration-500 ease-in-out"></div>
         <div class="relative z-10 group-hover:text-[#111] transition-colors duration-500">
-          <h3 class="text-4xl md:text-6xl brutal-title mb-4">Single Node</h3>
+          <h3 class="text-4xl md:text-6xl brutal-title mb-4">S3 Without The Bulk</h3>
           <p class="text-base md:text-lg max-w-none xl:max-w-3xl font-bold leading-relaxed opacity-70 group-hover:opacity-90">
-            No gossip. No consensus. One binary. Homelab ready.
+            Keep the S3 workflow your apps already know: buckets, objects, lists, copies,
+            deletes, and multipart uploads. You get compatibility without carrying a
+            storage platform built for a different scale.
           </p>
         </div>
+      </article>
+
+      <!-- Block 5 -->
+      <article class="shape-container p-8 md:p-16 hover:bg-(--accent-color)! hover:text-[#111]! transition-all duration-500 group relative overflow-hidden">
+        <i class="ph-duotone ph-terminal-window text-[15rem] absolute -right-10 -bottom-10 opacity-10 group-hover:opacity-30 group-hover:scale-110 transition-all"></i>
+        <h3 class="text-4xl md:text-6xl brutal-title mb-4 relative z-10">Reliable Writes</h3>
+        <p class="text-base md:text-lg max-w-none xl:max-w-3xl font-bold leading-relaxed relative z-10 opacity-70 group-hover:opacity-90">
+          Uploads land in temporary files, move into place atomically, and only become
+          live after metadata commits. Checksums are validated inline, with startup
+          reconciliation for leftovers.
+        </p>
       </article>
     </div>
   </div>
